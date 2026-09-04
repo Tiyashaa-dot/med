@@ -1,0 +1,114 @@
+import random
+QUIZ_QUESTIONS = [
+{
+"prompt": "In Avengers: Infinity War, who said these words 'Why is Gamora'?",
+"options": ["A) Star Lord", "B) Drax", "C) Iron Man", "D) Spider man"],
+"answer": "B"
+},
+{
+"prompt": "What phrase did Tony Stark use to give an emotional farewell to his daughter which then became an Internet meme used in response to any tragic situation?",
+"options": ["A) Catch you on the flip side", "B) I love you 3000", "C) See you tomorrow", "D) Peace out, kiddo"],
+"answer": "B"
+},
+{
+"prompt": "In Spider-Man: No Way Home, what classic item of internet history caused the internet to go crazy when all three live-action Spider-Man actors carried out the recreation?",
+"options": ["A) The pizza delivery dance", "B) The pointing Spider-Man cartoon meme", "C) The Spider-Man on a couch meme", "D) The crying Spider-Man face"],
+"answer": "B"
+
+},
+{
+"prompt": "What famous line did Loki shout after he'd fallen through space in Thor: Ragnarok?",
+"options": ["A) I have been falling for thirty minutes!", "B) I'm going to die!", "C) Stop the spaceship!", "D) Heimdall, open the bifrost!"],
+"answer": "A"
+},
+{
+"prompt": "What catchphrase did Captain America constantly use in order to show he never backs down?",
+"options": ["A) Destroy Thanos' thumb", "B) Grammatical", "C) I'm doing this for a while longer", "D) I got the meme reference"],
+"answer": "C"
+},
+{
+"prompt": "Wanda Maximoff dramatically declared she didn't need to explain to anyone in WandaVision what in the world was she even trying not to explain?",
+"options": ["A) Her magic", "B) Her grief", "C) Her kids", "D) Her shows"],
+"answer": "B"
+},
+{
+"prompt": "Who says 'I am Mary Poppins, y'all!' while flying?",
+"options": ["A) Gamora", "B) Rocket", "C) Peter Quill", "D) Yondu"],
+"answer": "D"
+},
+{
+"prompt": "When interviewed about which Disney Princess he'd find relatable, Anthony Mackie said his preference for Cinderella was because she...",
+"options": ["A) Speaks with animals", "B) She broke, homie", "C) Had great clothing", "D) I'm doing glory!"],
+"answer": "B"
+},
+{
+"prompt": "After the Battle of New York in the first film, what did Tony Stark joke that the rest of the Avengers should go eat together?",
+"options": ["A) Pizza", "B) Shawarma", "C) Burgers", "D) Tacos"],
+"answer": "B"
+},
+{
+"prompt": "During an interview, Tom Holland accidentally gave away that he'd just be shouting what during the ending of Infinity War?",
+"options": ["A) I'm still alive", "B) Thanos wins", "C) Iron man dies", "D) Everyone turns to dust"],
+"answer": "A"
+},
+{
+"What is the name of Thor's hammer mentioned in a press interview where Scott Lang (Paul Rudd) was speaking?",
+"A) Jeffrey"
+"B) Jonathan"
+"C) Jeremy"
+"D) Joseph",
+"B"
+}
+# defining a function
+def start_quiz():
+# randomize the questions each time
+questions = QUIZ_QUESTIONS.copy()
+random.shuffle(questions)
+score = 0
+total_questions = len(questions)
+print("="60)
+print("  WELCOME TO THE ULTIMATE MEME & LORE QUIZ!")
+print("="60)
+print("There are", total_questions, "questions.")
+print("Answer with A, B, C or D.")
+print()
+# process one question at a time
+for index, q in enumerate(questions, 1):
+print("Question", index, "/", total_questions)
+print(q["prompt"])
+# print options
+for option in q["options"]:
+print(option)
+# get the answer
+user_answer = input("\nYour answer: ").strip().upper()
+# verifying that the answer is A, B, C or D
+while user_answer not in ["A", "B", " C", "D"]:
+print("Invalid option. Please answer with A, B, C or D.")
+user_answer = input("Your answer: ").strip().upper()
+# compare to the answer
+if user_answer == q["answer"]:
+score += 1
+print("Correct!")
+print("Score:", score, "/", index)
+else:
+print("Wrong!")
+print("The correct answer was", q["answer"])
+print("Score:", score, "/", index)
+print("-"60)
+# printing final score
+print("\n" + "="60)
+print("     MEMELORD REPORT")
+print("="60)
+print("You got", score, "out of", total_questions, "correct.")
+percentage = (score / total_questions)*100
+print("Score:", percentage, "%")
+# performance message
+if percentage == 100:
+print("Absolute Earth's Mightiest Memelord!")
+elif percentage >= 60:
+print("That's not bad at all! You know your way around Marvel lore.")
+else:
+print("Time to refresh your knowledge of the memes!")
+print("="*60)
+# calling the function
+start_quiz()
